@@ -1,8 +1,47 @@
 #penrosy-canvas {
     background-color: white;
-    border: 1px solid black;
+    border-radius: 10px;
+    border: 2px solid black;
+    margin-left: 30px;
+    box-shadow: 1px 1px 1px grey;
+
 }
 
 .body {
-    background-color: pink;
+    background-color:	#ecadb6;
+}
+
+.title-bar {
+    color: white;
+    font-family: 'Elsie Swash Caps';
+    font-size: 46px;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px black;
+    margin: 20px;
+}
+
+.create-section {
+    /* display: flex; */
+    position: absolute;
+    top: 120px;
+    left: 50px;
+    z-index: 10;
+    padding: 10px 15px;
+    background-color: #ebecec;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.create-section button {
+    background-color: #ecadb6;
+    height: 60px;
+    width: 70px;
+    margin: 25px 15px;
+    border-radius: 5px;
+     border: 1px solid black;
+     box-shadow: 1px 1px 1px grey;
+}
+
+.create-section button:hover {
+    background-color: #cc0030;
 }

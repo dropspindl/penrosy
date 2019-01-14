@@ -1,40 +1,69 @@
-class Kite {
+const Tile = require('./tile');
+let to_radians = Math.PI / 180;
+
+
+class Kite  {
     constructor(options) {
-        this.x = 100;
-        this.y = 300;
+        this.x = 200;
+        this.y = 120;
         this.angle = 0;
-        this.color = "green";
-        this.size = 105;
-        this.ctx = options.ctx;
+        this.color = "#ecadb6";
+        this.size = 70;
+        // this.ctx = options.ctx;
        
+        this.isDragging = false;
+        this.isSelected = true;
+        // this.center_x = (2 * this.x + this.size * Math.sin(this.angle * to_radians)) / 2;
+        // this.center_y = (2 * this.y - this.size * Math.cos(this.angle * to_radians)) / 2;
+
+
     }
 
-    
+    centerX() {
+       return (2 * this.x + this.size * Math.sin(this.angle * to_radians)) / 2);
+    }
+
+    centerY() {
+       return (2 * this.y - this.size * Math.cos(this.angle * to_radians)) / 2);
+    }
+
 
     draw(ctx) {
-        const PHI = (Math.sqrt(5) + 1) / 2;
-        const rad36 = (36 * Math.PI) / 180;
-        let x = this.x;
-        let y = this.y;
+  
         let size = this.size;
-        let ang = this.angle;
-        ctx.fillStyle = this.color;
+        let angle = this.angle;
+        
+
+        
         
         ctx.beginPath();
-            
-            ctx.moveTo(x, y)
-        ctx.lineTo(x + size * Math.sin((36 + ang) * Math.PI / 180), y - size * Math.cos((36 + ang) * Math.PI / 180));
-        ctx.lineTo(x + size * Math.sin(ang * Math.PI / 180), y - size * Math.cos(ang * Math.PI / 180));
-        ctx.lineTo(x - size * Math.sin((36 - ang) * Math.PI / 180), y - size * Math.cos((36 - ang) * Math.PI / 180));
-        ctx.lineTo(x, y);
-        // c.lineTo( this.x + (Math.cos(rad36) * this.size), 
-        //     this.y - (Math.sin(rad36) * this.size));
-        // c.lineTo(
-            ctx.fill();
+           
+        //create kite shape 
+       
+        ctx.moveTo(this.x, this.y)
+        ctx.lineTo(this.x + size * Math.sin((36 + angle) * to_radians), 
+            this.y - size * Math.cos((36 + angle) * to_radians));
+        ctx.lineTo(this.x + size * Math.sin(angle * to_radians), 
+            this.y - size * Math.cos(angle * to_radians));
+        ctx.lineTo(this.x - size * Math.sin((36 - angle) * to_radians), 
+            this.y - size * Math.cos((36 - angle) * to_radians));
+        ctx.closePath();
+
+       
+        // var grd = ctx.createRadialGradient(center_x(), center_y(), 1, center_x(), center_y(), 55);
+        // grd.addColorStop(0, "white");
+        // grd.addColorStop(1, this.color);
+        // ctx.fillStyle = grd;
+        // ctx.fill();
+
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = "#35374C";
+        ctx.stroke();
+        ctx.fill();
     }
 
-
 }
+
 
 
 

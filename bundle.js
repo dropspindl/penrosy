@@ -119,6 +119,14 @@ class Dart  {
         return (2 * this.y - (this.size * Math.cos(this.angle * to_radians)) / PHI) / 2;
     }
 
+    xGivenCenter(center) {
+        return (2 * PHI * center - this.size * Math.sin(this.angle * to_radians)) / (2 * PHI);
+    }
+
+    yGivenCenter(center) {
+        return (2 * PHI * center + this.size * Math.cos(this.angle * to_radians)) / (2 * PHI);
+    }
+
 
     draw(ctx) {   
 
@@ -317,10 +325,15 @@ function onMouseDown(e){
 
 
 
+
 function onMouseMove(e) {
-    const pos = getMousePos(e);
-    draggingTile[0].x = pos.x;
-    draggingTile[0].y = pos.y;
+    const mouse = getMousePos(e);
+    let tile = draggingTile[0];
+
+    //xGivenCenter is written for each class, and is an equation that finds x given the center
+    //This is done so the mouse stays in the center of the tile rather than a corner
+    tile.x = tile.xGivenCenter(mouse.x) 
+    tile.y = tile.yGivenCenter(mouse.y)
 }
 
 canvas.addEventListener('mouseup', onMouseUp);
@@ -411,14 +424,20 @@ class Kite  {
        return ((2 * this.y - this.size * Math.cos(this.angle * to_radians)) / 2);
     }
 
+    xGivenCenter(center) {
+       return  (2 * center - this.size * Math.sin(this.angle * to_radians)) / 2;
+    }
+
+    yGivenCenter(center) {
+        return (2 * center + this.size * Math.cos(this.angle * to_radians))/2
+    }
+
 
     draw(ctx) {
   
         let size = this.size;
         let angle = this.angle;
         
-
-       
         
         ctx.beginPath();
            

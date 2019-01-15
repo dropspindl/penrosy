@@ -20,14 +20,20 @@ class Kite  {
        return ((2 * this.y - this.size * Math.cos(this.angle * to_radians)) / 2);
     }
 
+    xGivenCenter(center) {
+       return  (2 * center - this.size * Math.sin(this.angle * to_radians)) / 2;
+    }
+
+    yGivenCenter(center) {
+        return (2 * center + this.size * Math.cos(this.angle * to_radians))/2
+    }
+
 
     draw(ctx) {
   
         let size = this.size;
         let angle = this.angle;
         
-
-       
         
         ctx.beginPath();
            

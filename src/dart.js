@@ -21,6 +21,14 @@ class Dart  {
         return (2 * this.y - (this.size * Math.cos(this.angle * to_radians)) / PHI) / 2;
     }
 
+    xGivenCenter(center) {
+        return (2 * PHI * center - this.size * Math.sin(this.angle * to_radians)) / (2 * PHI);
+    }
+
+    yGivenCenter(center) {
+        return (2 * PHI * center + this.size * Math.cos(this.angle * to_radians)) / (2 * PHI);
+    }
+
 
     draw(ctx) {   
 

@@ -333,7 +333,7 @@ function onMouseUp(e) {
 
 
 function clearCanvas() {
-    ctx.clearRect(0, 0, 800, 800)
+    ctx.clearRect(0, 0, 890, 620)
 }    
 
 function animate() {

@@ -56,7 +56,7 @@ class Kite  {
         ctx.fill();
 
         ctx.lineWidth = 2;
-        ctx.strokeStyle = "#35374C";
+        ctx.strokeStyle = "#82e3e3";
         ctx.stroke();
         // ctx.fillStyle = this.color;
         // ctx.fill();
@@ -75,7 +75,7 @@ class Kite  {
 
 
         ctx.lineWidth = 3;
-        ctx.strokeStyle = "aqua";
+        ctx.strokeStyle = "#2a2abb";
         ctx.stroke();
     }
 

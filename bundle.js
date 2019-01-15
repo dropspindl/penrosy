@@ -153,7 +153,8 @@ class Dart  {
 
 
         ctx.lineWidth = 2;
-        ctx.strokeStyle = "#35374C";
+        // ctx.strokeStyle = "#35374C";
+        ctx.strokeStyle = "#82e3e3";
         ctx.stroke();
        
     }
@@ -176,32 +177,32 @@ class Dart  {
 
         ctx.closePath();
 
-        ctx.lineWidth = 3;
-        ctx.strokeStyle = "aqua";
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = "#2a2abb";
         ctx.stroke();
 
     }
 
-    addCircles(ctx) {
-        var centerX = this.x;
-        var centerY = this.y;
-        var radius = 3;
+    // addCircles(ctx) {
+    //     var centerX = this.x;
+    //     var centerY = this.y;
+    //     var radius = 3;
 
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-        ctx.fillStyle = 'blue';
-        ctx.fill();
+    //     ctx.beginPath();
+    //     ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+    //     ctx.fillStyle = 'blue';
+    //     ctx.fill();
 
-        var centerX = this.x + (size * Math.sin(angle * to_radians)) / PHI;
-        var centerY = this.y - (size * Math.cos(angle * to_radians)) / PHI;
-        // var radius = 3;
+    //     var centerX = this.x + (this.size * Math.sin(this.angle * to_radians)) / PHI;
+    //     var centerY = this.y - (this.size * Math.cos(this.angle * to_radians)) / PHI;
+    //     // var radius = 3;
 
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-        ctx.fillStyle = 'blue';
-        ctx.fill();
+    //     ctx.beginPath();
+    //     ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+    //     ctx.fillStyle = 'blue';
+    //     ctx.fill();
        
-    }
+    // }
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Dart);
@@ -229,6 +230,7 @@ __webpack_require__.r(__webpack_exports__);
 
 let canvas = document.getElementById('penrosy-canvas')
 let ctx = canvas.getContext("2d");
+let circles = false;
 
 const currentTile = [];
 let draggingTile = [];
@@ -242,18 +244,16 @@ function drawTiles() {
 //Place a kite when the create-kite button is clicked
 //Add kite to shape array 
 
-document.getElementById('create-kite').onclick = function () { addKite() }
 
-function addKite() {
+document.getElementById("create-kite").onclick = () => {
     const kite = new _kite__WEBPACK_IMPORTED_MODULE_0__["default"]();
     ALL_TILES.push(kite);
     currentTile[0] = kite;
-}
+};
+
 
 //Place a dart when dart button clicked
-document.getElementById('create-dart').onclick = function () { addDart() }
-
-function addDart() {
+document.getElementById('create-dart').onclick = () => {
     const dart = new _dart__WEBPACK_IMPORTED_MODULE_1__["default"](ctx);
     ALL_TILES.push(dart);
     currentTile[0] = dart;
@@ -261,13 +261,12 @@ function addDart() {
 
 //Clear canvas when clear canvas button is pushed 
 
-document.getElementById('clear-canvas').onclick = function () { deleteTiles() }
-
-function deleteTiles() {
+document.getElementById('clear-canvas').onclick = () => { 
     ALL_TILES.length = 0;
     currentTile.length = 0;
     draggingTile.length = 0;
 }
+
 
 //Clear current selected tile
 document.getElementById('clear-current').onclick = function () { deleteCurrent() }
@@ -281,6 +280,19 @@ function deleteCurrent() {
 
     currentTile[0] = null;
 }
+
+// document.getElementById("marker-circles").onclick = function() {
+//   addCircles();
+// };
+
+// function addCircles() {
+//     circles = true;
+//   })
+// }
+
+// function drawCircles() {
+//    ALL_TILES.forEach( tile => tile.addCircles(ctx))
+// }
 
 
 
@@ -380,6 +392,7 @@ function animate() {
     clearCanvas();
     drawTiles();
     highlightSelected();
+    // if (circles === true) {drawCircles()}
     
     // button.addEventListener("click", clearCanvas);
     requestAnimationFrame(animate);
@@ -489,7 +502,7 @@ class Kite  {
         ctx.fill();
 
         ctx.lineWidth = 2;
-        ctx.strokeStyle = "#35374C";
+        ctx.strokeStyle = "#82e3e3";
         ctx.stroke();
         // ctx.fillStyle = this.color;
         // ctx.fill();
@@ -508,7 +521,7 @@ class Kite  {
 
 
         ctx.lineWidth = 3;
-        ctx.strokeStyle = "aqua";
+        ctx.strokeStyle = "#2a2abb";
         ctx.stroke();
     }
 

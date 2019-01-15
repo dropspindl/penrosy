@@ -55,7 +55,8 @@ class Dart  {
 
 
         ctx.lineWidth = 2;
-        ctx.strokeStyle = "#35374C";
+        // ctx.strokeStyle = "#35374C";
+        ctx.strokeStyle = "#82e3e3";
         ctx.stroke();
        
     }
@@ -78,32 +79,32 @@ class Dart  {
 
         ctx.closePath();
 
-        ctx.lineWidth = 3;
-        ctx.strokeStyle = "aqua";
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = "#2a2abb";
         ctx.stroke();
 
     }
 
-    addCircles(ctx) {
-        var centerX = this.x;
-        var centerY = this.y;
-        var radius = 3;
+    // addCircles(ctx) {
+    //     var centerX = this.x;
+    //     var centerY = this.y;
+    //     var radius = 3;
 
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-        ctx.fillStyle = 'blue';
-        ctx.fill();
+    //     ctx.beginPath();
+    //     ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+    //     ctx.fillStyle = 'blue';
+    //     ctx.fill();
 
-        var centerX = this.x + (size * Math.sin(angle * to_radians)) / PHI;
-        var centerY = this.y - (size * Math.cos(angle * to_radians)) / PHI;
-        // var radius = 3;
+    //     var centerX = this.x + (this.size * Math.sin(this.angle * to_radians)) / PHI;
+    //     var centerY = this.y - (this.size * Math.cos(this.angle * to_radians)) / PHI;
+    //     // var radius = 3;
 
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-        ctx.fillStyle = 'blue';
-        ctx.fill();
+    //     ctx.beginPath();
+    //     ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+    //     ctx.fillStyle = 'blue';
+    //     ctx.fill();
        
-    }
+    // }
 }
 
 export default Dart;

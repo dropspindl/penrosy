@@ -1,0 +1,37 @@
+
+.create-section {
+    /* display: flex; */
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    z-index: 10;
+    padding: 10px 10px;
+    background-color: #ebecec;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.create-section button {
+    background-color: #ecadb6;
+    height: 60px;
+    width: 70px;
+    margin: 15px 15px;
+    border-radius: 5px;
+     border: 1px solid black;
+     box-shadow: 1px 1px 1px grey;
+}
+
+.create-section button:hover {
+    background-color: #cc0030;
+}
+
+.rotate-instructions {
+    background-color: white;
+  
+    width: 94px;
+    margin: 15px 0px;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+}

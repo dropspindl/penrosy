@@ -2,6 +2,7 @@ import Kite from './kite';
 import Dart from './dart';
 let canvas = document.getElementById('penrosy-canvas')
 let ctx = canvas.getContext("2d");
+let circles = false;
 
 export const currentTile = [];
 let draggingTile = [];
@@ -15,18 +16,16 @@ function drawTiles() {
 //Place a kite when the create-kite button is clicked
 //Add kite to shape array 
 
-document.getElementById('create-kite').onclick = function () { addKite() }
 
-function addKite() {
+document.getElementById("create-kite").onclick = () => {
     const kite = new Kite();
     ALL_TILES.push(kite);
     currentTile[0] = kite;
-}
+};
+
 
 //Place a dart when dart button clicked
-document.getElementById('create-dart').onclick = function () { addDart() }
-
-function addDart() {
+document.getElementById('create-dart').onclick = () => {
     const dart = new Dart(ctx);
     ALL_TILES.push(dart);
     currentTile[0] = dart;
@@ -34,13 +33,12 @@ function addDart() {
 
 //Clear canvas when clear canvas button is pushed 
 
-document.getElementById('clear-canvas').onclick = function () { deleteTiles() }
-
-function deleteTiles() {
+document.getElementById('clear-canvas').onclick = () => { 
     ALL_TILES.length = 0;
     currentTile.length = 0;
     draggingTile.length = 0;
 }
+
 
 //Clear current selected tile
 document.getElementById('clear-current').onclick = function () { deleteCurrent() }
@@ -54,6 +52,19 @@ function deleteCurrent() {
 
     currentTile[0] = null;
 }
+
+// document.getElementById("marker-circles").onclick = function() {
+//   addCircles();
+// };
+
+// function addCircles() {
+//     circles = true;
+//   })
+// }
+
+// function drawCircles() {
+//    ALL_TILES.forEach( tile => tile.addCircles(ctx))
+// }
 
 
 
@@ -153,6 +164,7 @@ export default function animate() {
     clearCanvas();
     drawTiles();
     highlightSelected();
+    // if (circles === true) {drawCircles()}
     
     // button.addEventListener("click", clearCanvas);
     requestAnimationFrame(animate);

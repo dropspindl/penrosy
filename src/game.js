@@ -3,9 +3,9 @@ import Dart from './dart';
 let canvas = document.getElementById('penrosy-canvas')
 let ctx = canvas.getContext("2d");
 
-let currentTile = [];
+export const currentTile = [];
 let draggingTile = [];
-const ALL_TILES = [];
+export const ALL_TILES = [];
 
 function drawTiles() {
     ctx.clearRect(0, 0, 800, 800);
@@ -15,7 +15,7 @@ function drawTiles() {
 //Place a kite when the create-kite button is clicked
 //Add kite to shape array 
 
-document.getElementById('create-kite').onclick = function(){addKite()}
+document.getElementById('create-kite').onclick = function () { addKite() }
 
 function addKite() {
     const kite = new Kite();
@@ -24,20 +24,22 @@ function addKite() {
 }
 
 //Place a dart when dart button clicked
-document.getElementById('create-dart').onclick = function() { addDart() }
+document.getElementById('create-dart').onclick = function () { addDart() }
 
 function addDart() {
     const dart = new Dart(ctx);
     ALL_TILES.push(dart);
-    currentTile[0] = dart; 
+    currentTile[0] = dart;
 }
 
 //Clear canvas when clear canvas button is pushed 
 
-document.getElementById('clear-canvas').onclick = function() { deleteTiles()}
+document.getElementById('clear-canvas').onclick = function () { deleteTiles() }
 
-function deleteTiles(){
+function deleteTiles() {
     ALL_TILES.length = 0;
+    currentTile.length = 0;
+    draggingTile.length = 0;
 }
 
 //Clear current selected tile
@@ -49,16 +51,11 @@ function deleteCurrent() {
     if (index !== -1) {
         ALL_TILES.splice(index, 1);
     }
+
+    currentTile[0] = null;
 }
 
-// //Place a dart when dart button clicked
-// document.getElementById('create-dart').onclick = function () { addDart() }
 
-// function addDart() {
-//     const dart = new Dart(ctx);
-//     ALL_TILES.push(dart);
-//     currentTile[0] = dart;
-// }
 
 
 
@@ -71,16 +68,16 @@ function rotateShape(e) {
     e.stopPropagation();
     switch (e.keyCode) {
         case 37:
-            currentTile[0].angle += 36;
+            currentTile[0].angle -= 36;
             break;
         case 39:
-            currentTile[0].angle -= 36;
-            break;
-        case 65:
             currentTile[0].angle += 36;
             break;
-        case 68:
+        case 65:
             currentTile[0].angle -= 36;
+            break;
+        case 68:
+            currentTile[0].angle += 36;
             break;
     }
 }
@@ -107,10 +104,12 @@ function getMousePos(evt) {
 }
 
 function onMouseDown(e){
+    console.log(currentTile);
     const pos = getMousePos(e)
     ALL_TILES.forEach(tile => {
        
-        if (distance(pos.x, pos.y, tile.centerX(), tile.centerY()) < 50 ) {
+        if (distance(pos.x, pos.y, tile.centerX(), tile.centerY()) < 30 ) {
+            
             
             currentTile[0] = tile;
             draggingTile[0] = tile;
@@ -138,6 +137,11 @@ function onMouseUp(e) {
     document.removeEventListener('mousemove', onMouseMove);
 }
 
+function highlightSelected() {
+    if (currentTile[0]) {
+        currentTile[0].highlight(ctx)
+    }
+}
 
 
 
@@ -146,8 +150,10 @@ function clearCanvas() {
 }    
 
 export default function animate() {
-    clearCanvas()
+    clearCanvas();
     drawTiles();
+    highlightSelected();
+    
     // button.addEventListener("click", clearCanvas);
     requestAnimationFrame(animate);
 }

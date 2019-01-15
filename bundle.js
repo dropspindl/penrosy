@@ -100,7 +100,7 @@ __webpack_require__.r(__webpack_exports__);
 
 let PHI = (Math.sqrt(5) + 1)/2;
 let to_radians = Math.PI / 180;
-let colors = ["#ecadb6", "#cc0030", "#566f56"];
+let colors = ["#ecadb6", "#cc0030", "#ecadb6", "#cc0030", "#566f56"];
 
 class Dart  {
     constructor(options) {
@@ -144,9 +144,6 @@ class Dart  {
             this.y - size * Math.cos((36 - angle) * to_radians));
        
         ctx.closePath();
-
-        let center_x = (2 * this.x + size * Math.sin(angle * to_radians) / PHI) / 2;
-        let center_y = (2 * this.y - size * Math.cos(angle * to_radians) / PHI) / 2;
       
         var grd = ctx.createRadialGradient(this.centerX(), this.centerY(), 2, this.centerX(), this.centerY(), 45 );
         grd.addColorStop(0, "white");
@@ -155,10 +152,34 @@ class Dart  {
         ctx.fill();
 
 
-        ctx.lineWidth = 1;
+        ctx.lineWidth = 2;
         ctx.strokeStyle = "#35374C";
         ctx.stroke();
        
+    }
+
+
+    highlight(ctx) {
+
+        let size = this.size;
+        let angle = this.angle;
+
+        ctx.beginPath();
+        ctx.moveTo(this.x, this.y);
+
+        ctx.lineTo(this.x + size * Math.sin((36 + angle) * to_radians),
+            this.y - size * Math.cos((36 + angle) * to_radians));
+        ctx.lineTo(this.x + size * Math.sin(angle * to_radians) / PHI,
+            this.y - size * Math.cos(angle * to_radians) / PHI);
+        ctx.lineTo(this.x - size * Math.sin((36 - angle) * to_radians),
+            this.y - size * Math.cos((36 - angle) * to_radians));
+
+        ctx.closePath();
+
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = "aqua";
+        ctx.stroke();
+
     }
 
     addCircles(ctx) {
@@ -194,11 +215,13 @@ class Dart  {
 /*!*********************!*\
   !*** ./src/game.js ***!
   \*********************/
-/*! exports provided: default */
+/*! exports provided: currentTile, ALL_TILES, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "currentTile", function() { return currentTile; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ALL_TILES", function() { return ALL_TILES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return animate; });
 /* harmony import */ var _kite__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./kite */ "./src/kite.js");
 /* harmony import */ var _dart__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dart */ "./src/dart.js");
@@ -207,7 +230,7 @@ __webpack_require__.r(__webpack_exports__);
 let canvas = document.getElementById('penrosy-canvas')
 let ctx = canvas.getContext("2d");
 
-let currentTile = [];
+const currentTile = [];
 let draggingTile = [];
 const ALL_TILES = [];
 
@@ -219,7 +242,7 @@ function drawTiles() {
 //Place a kite when the create-kite button is clicked
 //Add kite to shape array 
 
-document.getElementById('create-kite').onclick = function(){addKite()}
+document.getElementById('create-kite').onclick = function () { addKite() }
 
 function addKite() {
     const kite = new _kite__WEBPACK_IMPORTED_MODULE_0__["default"]();
@@ -228,20 +251,22 @@ function addKite() {
 }
 
 //Place a dart when dart button clicked
-document.getElementById('create-dart').onclick = function() { addDart() }
+document.getElementById('create-dart').onclick = function () { addDart() }
 
 function addDart() {
     const dart = new _dart__WEBPACK_IMPORTED_MODULE_1__["default"](ctx);
     ALL_TILES.push(dart);
-    currentTile[0] = dart; 
+    currentTile[0] = dart;
 }
 
 //Clear canvas when clear canvas button is pushed 
 
-document.getElementById('clear-canvas').onclick = function() { deleteTiles()}
+document.getElementById('clear-canvas').onclick = function () { deleteTiles() }
 
-function deleteTiles(){
+function deleteTiles() {
     ALL_TILES.length = 0;
+    currentTile.length = 0;
+    draggingTile.length = 0;
 }
 
 //Clear current selected tile
@@ -253,16 +278,11 @@ function deleteCurrent() {
     if (index !== -1) {
         ALL_TILES.splice(index, 1);
     }
+
+    currentTile[0] = null;
 }
 
-// //Place a dart when dart button clicked
-// document.getElementById('create-dart').onclick = function () { addDart() }
 
-// function addDart() {
-//     const dart = new Dart(ctx);
-//     ALL_TILES.push(dart);
-//     currentTile[0] = dart;
-// }
 
 
 
@@ -275,16 +295,16 @@ function rotateShape(e) {
     e.stopPropagation();
     switch (e.keyCode) {
         case 37:
-            currentTile[0].angle += 36;
+            currentTile[0].angle -= 36;
             break;
         case 39:
-            currentTile[0].angle -= 36;
-            break;
-        case 65:
             currentTile[0].angle += 36;
             break;
-        case 68:
+        case 65:
             currentTile[0].angle -= 36;
+            break;
+        case 68:
+            currentTile[0].angle += 36;
             break;
     }
 }
@@ -311,10 +331,12 @@ function getMousePos(evt) {
 }
 
 function onMouseDown(e){
+    console.log(currentTile);
     const pos = getMousePos(e)
     ALL_TILES.forEach(tile => {
        
-        if (distance(pos.x, pos.y, tile.centerX(), tile.centerY()) < 50 ) {
+        if (distance(pos.x, pos.y, tile.centerX(), tile.centerY()) < 30 ) {
+            
             
             currentTile[0] = tile;
             draggingTile[0] = tile;
@@ -342,6 +364,11 @@ function onMouseUp(e) {
     document.removeEventListener('mousemove', onMouseMove);
 }
 
+function highlightSelected() {
+    if (currentTile[0]) {
+        currentTile[0].highlight(ctx)
+    }
+}
 
 
 
@@ -350,8 +377,10 @@ function clearCanvas() {
 }    
 
 function animate() {
-    clearCanvas()
+    clearCanvas();
     drawTiles();
+    highlightSelected();
+    
     // button.addEventListener("click", clearCanvas);
     requestAnimationFrame(animate);
 }
@@ -463,7 +492,24 @@ class Kite  {
         ctx.strokeStyle = "#35374C";
         ctx.stroke();
         // ctx.fillStyle = this.color;
-        ctx.fill();
+        // ctx.fill();
+    }
+
+    highlight(ctx) {
+        ctx.beginPath();
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.x + this.size * Math.sin((36 + this.angle) * to_radians),
+            this.y - this.size * Math.cos((36 + this.angle) * to_radians));
+        ctx.lineTo(this.x + this.size * Math.sin(this.angle * to_radians),
+            this.y - this.size * Math.cos(this.angle * to_radians));
+        ctx.lineTo(this.x - this.size * Math.sin((36 - this.angle) * to_radians),
+            this.y - this.size * Math.cos((36 - this.angle) * to_radians));
+        ctx.closePath();
+
+
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = "aqua";
+        ctx.stroke();
     }
 
 }

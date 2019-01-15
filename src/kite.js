@@ -59,7 +59,24 @@ class Kite  {
         ctx.strokeStyle = "#35374C";
         ctx.stroke();
         // ctx.fillStyle = this.color;
-        ctx.fill();
+        // ctx.fill();
+    }
+
+    highlight(ctx) {
+        ctx.beginPath();
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.x + this.size * Math.sin((36 + this.angle) * to_radians),
+            this.y - this.size * Math.cos((36 + this.angle) * to_radians));
+        ctx.lineTo(this.x + this.size * Math.sin(this.angle * to_radians),
+            this.y - this.size * Math.cos(this.angle * to_radians));
+        ctx.lineTo(this.x - this.size * Math.sin((36 - this.angle) * to_radians),
+            this.y - this.size * Math.cos((36 - this.angle) * to_radians));
+        ctx.closePath();
+
+
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = "aqua";
+        ctx.stroke();
     }
 
 }

@@ -96,27 +96,31 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _game__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./game */ "./src/game.js");
-const Tile = __webpack_require__(/*! ./tile */ "./src/tile.js");
+
 
 let PHI = (Math.sqrt(5) + 1)/2;
+let to_radians = Math.PI / 180;
+let colors = ["#ecadb6", "#cc0030", "#566f56"];
 
 class Dart  {
     constructor(options) {
-        this.x = 350;
-        this.y = 300;
-        this.angle = 126;
-        this.color = "grey";
-        this.size = 85;
-        this.ctx = options.ctx;
+        this.x = 200;
+        this.y = 240;
+        this.angle = 0;
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+        this.size = 70;
+    }
 
+    centerX() {
+        return (2 * this.x + this.size * Math.sin(this.angle * to_radians) / PHI) / 2; 
+    }
 
+    centerY(){
+        return (2 * this.y - (this.size * Math.cos(this.angle * to_radians)) / PHI) / 2;
     }
 
 
-
-    draw(ctx) {
-        
-        let to_radians = Math.PI / 180;
+    draw(ctx) {   
 
         let size = this.size;
         let angle = this.angle;
@@ -136,9 +140,9 @@ class Dart  {
         let center_x = (2 * this.x + size * Math.sin(angle * to_radians) / PHI) / 2;
         let center_y = (2 * this.y - size * Math.cos(angle * to_radians) / PHI) / 2;
       
-        var grd = ctx.createRadialGradient(center_x, center_y, 2, center_x, center_y, 55 );
+        var grd = ctx.createRadialGradient(this.centerX(), this.centerY(), 2, this.centerX(), this.centerY(), 45 );
         grd.addColorStop(0, "white");
-        grd.addColorStop(1, " #E1B8B2");
+        grd.addColorStop(1, this.color);
         ctx.fillStyle = grd;
         ctx.fill();
 
@@ -146,6 +150,27 @@ class Dart  {
         ctx.lineWidth = 1;
         ctx.strokeStyle = "#35374C";
         ctx.stroke();
+       
+    }
+
+    addCircles(ctx) {
+        var centerX = this.x;
+        var centerY = this.y;
+        var radius = 3;
+
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+        ctx.fillStyle = 'blue';
+        ctx.fill();
+
+        var centerX = this.x + (size * Math.sin(angle * to_radians)) / PHI;
+        var centerY = this.y - (size * Math.cos(angle * to_radians)) / PHI;
+        // var radius = 3;
+
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+        ctx.fillStyle = 'blue';
+        ctx.fill();
        
     }
 }
@@ -170,15 +195,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _kite__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./kite */ "./src/kite.js");
 /* harmony import */ var _dart__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dart */ "./src/dart.js");
 
-// import { putShape, onMouseMove, onMoveSelect, shapeFollow, onMouseUp } from './actions';
-
 
 let canvas = document.getElementById('penrosy-canvas')
 let ctx = canvas.getContext("2d");
-let currentShape = [];
 
-//Array of all tiles
-
+let currentTile = [];
+let draggingTile = [];
 const ALL_TILES = [];
 
 function drawTiles() {
@@ -194,7 +216,7 @@ document.getElementById('create-kite').onclick = function(){addKite()}
 function addKite() {
     const kite = new _kite__WEBPACK_IMPORTED_MODULE_0__["default"]();
     ALL_TILES.push(kite);
-    currentShape[0] = kite;
+    currentTile[0] = kite;
 }
 
 //Place a dart when dart button clicked
@@ -203,7 +225,7 @@ document.getElementById('create-dart').onclick = function() { addDart() }
 function addDart() {
     const dart = new _dart__WEBPACK_IMPORTED_MODULE_1__["default"](ctx);
     ALL_TILES.push(dart);
-    currentShape[0] = dart; 
+    currentTile[0] = dart; 
 }
 
 //Clear canvas when clear canvas button is pushed 
@@ -212,8 +234,28 @@ document.getElementById('clear-canvas').onclick = function() { deleteTiles()}
 
 function deleteTiles(){
     ALL_TILES.length = 0;
-    // clearCanvas()
 }
+
+//Clear current selected tile
+document.getElementById('clear-current').onclick = function () { deleteCurrent() }
+
+function deleteCurrent() {
+    let index = ALL_TILES.indexOf(currentTile[0]); //Find the index of the current tile
+
+    if (index !== -1) {
+        ALL_TILES.splice(index, 1);
+    }
+}
+
+// //Place a dart when dart button clicked
+// document.getElementById('create-dart').onclick = function () { addDart() }
+
+// function addDart() {
+//     const dart = new Dart(ctx);
+//     ALL_TILES.push(dart);
+//     currentTile[0] = dart;
+// }
+
 
 
 //Rotate tile when clicking on A or D
@@ -225,18 +267,17 @@ function rotateShape(e) {
     e.stopPropagation();
     switch (e.keyCode) {
         case 37:
-            currentShape[0].angle += 36;
+            currentTile[0].angle += 36;
             break;
         case 39:
-            currentShape[0].angle -= 36;
+            currentTile[0].angle -= 36;
             break;
         case 65:
-            currentShape[0].angle += 36;
+            currentTile[0].angle += 36;
             break;
         case 68:
-            currentShape[0].angle -= 36;
+            currentTile[0].angle -= 36;
             break;
-
     }
 }
 
@@ -244,10 +285,52 @@ function rotateShape(e) {
 //When you mousedown, go through shape array
 //If mousedown was on shape, set shape's selected and dragging attributes to true
 
- canvas.addEventListener('mousedown', onMouseDown);
+canvas.addEventListener('mousedown', onMouseDown);
 
-// function onMouseDown(e)
-//     e.stopPropagation(); //so it doesn't bubble up
+function distance(mx, my, x, y){
+    let xDist = mx - x;
+    let yDist = my - y;
+
+    return Math.sqrt((xDist * xDist) + (yDist * yDist))
+}
+
+function getMousePos(evt) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+        x: evt.clientX - rect.left,
+        y: evt.clientY-rect.top 
+    };
+}
+
+function onMouseDown(e){
+    const pos = getMousePos(e)
+    ALL_TILES.forEach(tile => {
+       
+        if (distance(pos.x, pos.y, tile.centerX(), tile.centerY()) < 50 ) {
+            
+            currentTile[0] = tile;
+            draggingTile[0] = tile;
+            document.addEventListener('mousemove', onMouseMove);
+        }
+    })
+}
+
+
+
+function onMouseMove(e) {
+    const pos = getMousePos(e);
+    draggingTile[0].x = pos.x;
+    draggingTile[0].y = pos.y;
+}
+
+canvas.addEventListener('mouseup', onMouseUp);
+    
+function onMouseUp(e) {
+    document.removeEventListener('mousemove', onMouseMove);
+}
+
+
+
 
 function clearCanvas() {
     ctx.clearRect(0, 0, 800, 800)
@@ -302,32 +385,74 @@ document.addEventListener("DOMContentLoaded", () => {
   !*** ./src/kite.js ***!
   \*********************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module parse failed: Unexpected token (23:78)\nYou may need an appropriate loader to handle this file type.\n| \n|     centerX() {\n>        return (2 * this.x + this.size * Math.sin(this.angle * to_radians)) / 2);\n|     }\n| ");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 
-/***/ }),
+let to_radians = Math.PI / 180;
+let colors = ["#ecadb6", "#cc0030", "#566f56"];
 
-/***/ "./src/tile.js":
-/*!*********************!*\
-  !*** ./src/tile.js ***!
-  \*********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
 
-// class Tile {
-//     constructor(options)
+class Kite  {
+    constructor(options) {
+        this.x = 200;
+        this.y = 120;
+        this.angle = 0;
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+        this.size = 70;
+    }
 
-//     this.x = options.x;
-//     this.angle = options.angle;
-//     this.color = options.color
-//     this.selected = false;
+    centerX() {
+       return ((2 * this.x + this.size * Math.sin(this.angle * to_radians)) / 2);
+    }
 
-// }
+    centerY() {
+       return ((2 * this.y - this.size * Math.cos(this.angle * to_radians)) / 2);
+    }
 
-// canvas.onmousedown = myDown;
-// canvas.onmouseup = myUp;
-// canvas.onmousemove = myMove;
+
+    draw(ctx) {
+  
+        let size = this.size;
+        let angle = this.angle;
+        
+
+       
+        
+        ctx.beginPath();
+           
+        //create kite shape 
+       
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.x + size * Math.sin((36 + angle) * to_radians), 
+            this.y - size * Math.cos((36 + angle) * to_radians));
+        ctx.lineTo(this.x + size * Math.sin(angle * to_radians), 
+            this.y - size * Math.cos(angle * to_radians));
+        ctx.lineTo(this.x - size * Math.sin((36 - angle) * to_radians), 
+            this.y - size * Math.cos((36 - angle) * to_radians));
+        ctx.closePath();
+
+       
+        var grd = ctx.createRadialGradient(this.centerX(), this.centerY(), 1, this.centerX(), this.centerY(), 55);
+        grd.addColorStop(0, "white");
+        grd.addColorStop(1, this.color);
+        ctx.fillStyle = grd;
+        ctx.fill();
+
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = "#35374C";
+        ctx.stroke();
+        // ctx.fillStyle = this.color;
+        ctx.fill();
+    }
+
+}
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = (Kite);
 
 /***/ })
 

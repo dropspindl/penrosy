@@ -1,24 +1,28 @@
-const Tile = require("./tile");
+
 import ALL_TILES from './game';
 let PHI = (Math.sqrt(5) + 1)/2;
+let to_radians = Math.PI / 180;
+let colors = ["#ecadb6", "#cc0030", "#566f56"];
 
 class Dart  {
     constructor(options) {
-        this.x = 350;
-        this.y = 300;
-        this.angle = 126;
-        this.color = "grey";
-        this.size = 85;
-        this.ctx = options.ctx;
+        this.x = 200;
+        this.y = 240;
+        this.angle = 0;
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+        this.size = 70;
+    }
 
+    centerX() {
+        return (2 * this.x + this.size * Math.sin(this.angle * to_radians) / PHI) / 2; 
+    }
 
+    centerY(){
+        return (2 * this.y - (this.size * Math.cos(this.angle * to_radians)) / PHI) / 2;
     }
 
 
-
-    draw(ctx) {
-        
-        let to_radians = Math.PI / 180;
+    draw(ctx) {   
 
         let size = this.size;
         let angle = this.angle;
@@ -38,9 +42,9 @@ class Dart  {
         let center_x = (2 * this.x + size * Math.sin(angle * to_radians) / PHI) / 2;
         let center_y = (2 * this.y - size * Math.cos(angle * to_radians) / PHI) / 2;
       
-        var grd = ctx.createRadialGradient(center_x, center_y, 2, center_x, center_y, 55 );
+        var grd = ctx.createRadialGradient(this.centerX(), this.centerY(), 2, this.centerX(), this.centerY(), 45 );
         grd.addColorStop(0, "white");
-        grd.addColorStop(1, " #E1B8B2");
+        grd.addColorStop(1, this.color);
         ctx.fillStyle = grd;
         ctx.fill();
 
@@ -48,6 +52,27 @@ class Dart  {
         ctx.lineWidth = 1;
         ctx.strokeStyle = "#35374C";
         ctx.stroke();
+       
+    }
+
+    addCircles(ctx) {
+        var centerX = this.x;
+        var centerY = this.y;
+        var radius = 3;
+
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+        ctx.fillStyle = 'blue';
+        ctx.fill();
+
+        var centerX = this.x + (size * Math.sin(angle * to_radians)) / PHI;
+        var centerY = this.y - (size * Math.cos(angle * to_radians)) / PHI;
+        // var radius = 3;
+
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+        ctx.fillStyle = 'blue';
+        ctx.fill();
        
     }
 }

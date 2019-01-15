@@ -1,15 +1,26 @@
+.body {
+    background-color:	#ecadb6;
+}
+
+.penrosy-container {
+    width: 1000px;
+    height: 100vh;
+   
+    margin: 0px calc((100vw - 1000px) / 2); 
+    position: relative;
+}
+
 #penrosy-canvas {
     background-color: white;
     border-radius: 10px;
     border: 2px solid black;
-    margin-left: 30px;
+    /* margin-left: 30px; */
+    /* margin-left: calc((100vw - 1100px) / 2); */
     box-shadow: 1px 1px 1px grey;
 
 }
 
-.body {
-    background-color:	#ecadb6;
-}
+
 
 .title-bar {
     color: white;
@@ -23,8 +34,8 @@
 .create-section {
     /* display: flex; */
     position: absolute;
-    top: 120px;
-    left: 50px;
+    top: 100px;
+    left: 20px;
     z-index: 10;
     padding: 10px 10px;
     background-color: #ebecec;
@@ -36,7 +47,7 @@
     background-color: #ecadb6;
     height: 60px;
     width: 70px;
-    margin: 25px 15px;
+    margin: 15px 15px;
     border-radius: 5px;
      border: 1px solid black;
      box-shadow: 1px 1px 1px grey;
@@ -44,4 +55,15 @@
 
 .create-section button:hover {
     background-color: #cc0030;
+}
+
+.rotate-instructions {
+    background-color: white;
+  
+    width: 94px;
+    margin: 15px 0px;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
 }

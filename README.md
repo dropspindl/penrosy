@@ -19,17 +19,24 @@ these two shapes can be laid like a mosaic in a never-ending, never-repeating pa
 
 Learn more about Penrose tiles [here](http://nautil.us/issue/13/symmetry/impossible-cookware-and-other-triumphs-of-the-penrose-tile)
 
-## Penrosy Overview
-
-Penrosy is an app that allows you to place Penrose tiles on a canvas to create beautiful artwork! 
-
-  
 
 ## Technologies
 
   - Javascript 
   - CSS 
   - Canvas (to make tile shape) 
+ 
+  I developed Penrosy using straight Javascript with Canvas in order to strengthen my skills in that language. 
+  
+## Building the Tiles 
+ 
+ The tiles are drawn using Canvas. It was important for me to get them mathematically correct rather than just using an image or approximate points. 
+
+One difficulty I encountered is that the tiles are drawn using a starting x and y coordinate point. However, I want both the color gradient and the mouse abilities to be focused on the center of the tile, NOT on a specific vertices. This meant that I ended up having to write a decent amount of code to find the center, given the x, y, size, and angle, and to find the x or y coordinate given the center (and size, and angle). Were I to start this project over (or do a lot of refactoring), I would have chosen to make the x and y coordinates the center of the tile, and adjust my formulae for drawing the tiles accordingly. 
+
+Below is coding for the Dart class, where you can see that since my draw function starts at vertices (x, y) I have created functions to get to and from the center. These functions, using different formulae are written on the kite class also, which allows me to call it on any tile. 
+
+<img src='https://i.imgur.com/OCPmqCw.png' />
   
  ## MVPs 
  

@@ -1,25 +1,16 @@
 # Penrosy
 
+<img src="https://imgur.com/a/JmBvSqo">
+
+Penrose tiling apps generally focus solely on the math, ignoring aesthetics completely. Some don't even have any color at all!
+
+Just because Penrose Tiles are mathy, doesn't mean they can't be beautiful too!
+
+I created Penrosy to allow people to explore the beauty of Penrose tiles in an open-ended fashion
 
 
 ## Penrose Tiles- Background
-
-
-Penrose Kite and Dart Tiling (P2)  
-
-
-<img src="https://www.math.uni-bielefeld.de/~gaehler/tilings/kitedart.gif">
-
-
-
-Penrose Rhombus Tiling (P3)  
-
-
-<img src="https://i.ytimg.com/vi/KuXxly7-k1Q/maxresdefault.jpg">
-
-
-
-
+ 
 
 An aperiodic tiling is one that can cover an infinite plane with no gaps, but NEVER REPEAT! It is always different. 
 The most famous aperiodic tilings were discovered by Roger Penrose in the 1970s. 
@@ -40,33 +31,7 @@ people can lay them wherever and will have to eyeball it)
 
 <img src="https://i.imgur.com/u9PdWmS.png"  />
 
-## Schedule 
 
-### Day 1 (Friday + Weekend)
-
-  - Learn basics of Canvas (Is this the correct tool for this?)
-  - Create Penrose tile shapes using Canvas
-
-### Day 2 (Monday)
-
-  - Place Penrose tiles on screen 
-  - Be able to drag and drop tiles 
-  - Be able to clear canvas by clicking button
-  
-### Day 3 (Tuesday)
-
-  - Basic styling of site 
-  - Limit tiles to canvas area of screen
-
-### Day 4 (Wednesday)
-
-  - Be able to rotate tiles
-  - Create "About" section 
-  
-### Stretch Goals 
-
-  - Ability to change color palette of tiles
-  - Ability to zoom in and out
   
 
 ## Technologies

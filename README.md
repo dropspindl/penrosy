@@ -1,6 +1,6 @@
 # Penrosy
 
-<img src="https://imgur.com/a/JmBvSqo.png" />
+<img src="https://i.imgur.com/TM4bH1F.png" />
 
 Penrose tiling apps generally focus solely on the math, ignoring aesthetics completely. Some don't even have any color at all!
 

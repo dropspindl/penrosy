@@ -1,5 +1,7 @@
 # Penrosy
 
+<img src='https://i.imgur.com/BDrUeJ0.png' align='center'/>
+
 Penrose tiling apps generally focus solely on the math, ignoring aesthetics completely. Some don't even have any color at all!
 
 Just because Penrose Tiles are mathy, doesn't mean they can't be beautiful too! I created Penrosy to allow people to explore the beauty of Penrose tiles in an open-ended fashion

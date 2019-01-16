@@ -1,12 +1,12 @@
 # Penrosy
-
-<img src='https://i.imgur.com/BDrUeJ0.png' align='center'/>
+<br/>
+<img src='https://i.imgur.com/BDrUeJ0.png' align='center' border-radius=3/>
 
 Penrose tiling apps generally focus solely on the math, ignoring aesthetics completely. Some don't even have any color at all!
 
 Just because Penrose Tiles are mathy, doesn't mean they can't be beautiful too! I created Penrosy to allow people to explore the beauty of Penrose tiles in an open-ended fashion
 
-<img src="https://i.imgur.com/TM4bH1F.png" />
+<img src="https://i.imgur.com/TM4bH1F.png" align='center' border-radius=3/>
 
 
 ## Penrose Tiles- Background
@@ -38,7 +38,7 @@ One difficulty I encountered is that the tiles are drawn using a starting x and 
 
 Below is coding for the Dart class, where you can see that since my draw function starts at vertices (x, y) I have created functions to get to and from the center. These functions, using different formulae are written on the kite class also, which allows me to call it on any tile. 
 
-<img src='https://i.imgur.com/OCPmqCw.png' />
+<img src='https://i.imgur.com/OCPmqCw.png' align='center' border-radius=3 />
 
 ## Game Loop 
 
@@ -60,7 +60,7 @@ Mouse move looks at the location of the mouse and uses the aforementioned formul
 
 In the code below, you can see my mouse down function. There was a tricky bug here where the place that needed to be clicked to make the function run was above and to the left of the actual shape. This turned out to be because the mouse listener was getting it's coordinates relative to the whole screen, rather than the canvas itself. This was solved with the getMousePos function which return the mouse's position relative to the bounding canvas. 
 
-<img src='https://i.imgur.com/8WuZSR2.png' />
+<img src='https://i.imgur.com/8WuZSR2.png' align='center' border-radius=3/>
 
 
 

@@ -9,24 +9,33 @@
     background-color: #ebecec;
     border-radius: 5px;
     border: 1px solid black;
+    font-family: 'Open Sans';
+    
 }
 
 .create-section button {
+    /* color: indigo; */
     background-color: #ecadb6;
+    background: linear-gradient(to bottom right, white, #ecadb6);
     height: 60px;
     width: 70px;
     margin: 15px 15px;
     border-radius: 5px;
      border: 1px solid black;
      box-shadow: 1px 1px 1px grey;
+    font-size: 14px;
 }
 
 .create-section button:hover {
     background-color: #cc0030;
+    background: linear-gradient(to bottom right, white, #e88695);
+    border: 2px solid black;
+    font-weight: bold;
 }
 
 .rotate-instructions {
     background-color: white;
+    font-size: 14px;
   
     width: 94px;
     margin: 15px 0px;

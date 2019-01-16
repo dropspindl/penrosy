@@ -74,7 +74,7 @@ class Kite  {
         ctx.closePath();
 
 
-        ctx.lineWidth = 3;
+        ctx.lineWidth = 2;
         ctx.strokeStyle = "#2a2abb";
         ctx.stroke();
     }

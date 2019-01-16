@@ -157,7 +157,7 @@ function highlightSelected() {
 
 
 function clearCanvas() {
-    ctx.clearRect(0, 0, 890, 620)
+    ctx.clearRect(0, 0, 1100, 620)
 }    
 
 export default function animate() {

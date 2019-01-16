@@ -385,7 +385,7 @@ function highlightSelected() {
 
 
 function clearCanvas() {
-    ctx.clearRect(0, 0, 890, 620)
+    ctx.clearRect(0, 0, 1100, 620)
 }    
 
 function animate() {
@@ -520,7 +520,7 @@ class Kite  {
         ctx.closePath();
 
 
-        ctx.lineWidth = 3;
+        ctx.lineWidth = 2;
         ctx.strokeStyle = "#2a2abb";
         ctx.stroke();
     }

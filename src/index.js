@@ -3,7 +3,7 @@ import Dart from './dart.js';
 import animate from './game.js'
 
 let modal = document.getElementById("about");
-let penrosy = document.getElementById('penrosy-container');
+let penrosy = document.getElementById('bod');
 
 document.addEventListener("DOMContentLoaded", () => {
     const canvas = document.getElementById("penrosy-canvas");
@@ -25,6 +25,8 @@ const openModal = function(e) {
     console.log("it should open")
     modal.style.display = "block";
     penrosy.addEventListener("click", closeModal);
+    penrosy.classList.add("hiding");
+    // penrosy.id = 'hiding';
 
 }
 
@@ -33,4 +35,7 @@ const closeModal = function(e) {
     console.log("it should close?");
     modal.style.display = "none";
     penrosy.removeEventListener("click", closeModal);
+    penrosy.className = penrosy.className.replace(/\bhiding\b/g, "");
+    // penrosy.id = 'not';
+
 }

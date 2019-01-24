@@ -1,14 +1,36 @@
 .hiding { 
-    filter: brightness(80%);
+    /* filter: brightness(50%); */
+
+    /* opacity: 0.5; */
+    /* filter: greyscale(50%); */
+    /* background:rgba(56,255,255,0.1); */
+   
+    
 }
 
 #about { 
-    width: 500px;
-    height: 500px;
+    width: 1002px;
+    height: 600px;
     background-image: url('../penrosy_banner.png');
+    /* background-repeat: no-repeat; */
+    object-fit: contain;
     z-index: 100;
     display: block;
     position: absolute;
-    left: calc(50% - 250px);
+    left: calc(50% - 503px);
+    top: 88px;
+    border-radius: 10px;
+    border: 4px solid grey;
+   
     
+}
+
+.description {
+    width: 600px;
+    height: 480px;
+    /* margin: auto; */
+    background-color: white;
+    opacity: .85;
+    margin: 40px auto;
+    border: 2px solid grey;
 }

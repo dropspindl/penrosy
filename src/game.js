@@ -11,6 +11,7 @@ export const ALL_TILES = [];
 function drawTiles() {
     ctx.clearRect(0, 0, 1250, 900);
     ALL_TILES.forEach(tile => tile.draw(ctx))
+    // console.log("ahahah");
 }
 
 //Place a kite when the create-kite button is clicked

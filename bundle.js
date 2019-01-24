@@ -239,6 +239,7 @@ const ALL_TILES = [];
 function drawTiles() {
     ctx.clearRect(0, 0, 1250, 900);
     ALL_TILES.forEach(tile => tile.draw(ctx))
+    // console.log("ahahah");
 }
 
 //Place a kite when the create-kite button is clicked
@@ -417,19 +418,38 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+let modal = document.getElementById("about");
+let penrosy = document.getElementById('penrosy-container');
+
 document.addEventListener("DOMContentLoaded", () => {
     const canvas = document.getElementById("penrosy-canvas");
-
     const ctx = canvas.getContext("2d");
+
     Object(_game_js__WEBPACK_IMPORTED_MODULE_2__["default"])();
-    // const game = new Game(ctx);
-    // const kite = new Kite(ctx);
-    // kite#b3002a.draw(ctx);
+
+    document.getElementById("learn").addEventListener("click", openModal);
+    penrosy.addEventListener("click", closeModal);
 
     // const dart = new Dart(ctx);
     // dart.draw(ctx);
 });
 
+
+const openModal = function(e) {
+   
+    e.stopPropagation();
+    console.log("it should open")
+    modal.style.display = "block";
+    penrosy.addEventListener("click", closeModal);
+
+}
+
+const closeModal = function(e) {
+    e.stopPropagation();
+    console.log("it should close?");
+    modal.style.display = "none";
+    penrosy.removeEventListener("click", closeModal);
+}
 
 
 /***/ }),

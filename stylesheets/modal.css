@@ -1,0 +1,14 @@
+.hiding { 
+    filter: brightness(80%);
+}
+
+#about { 
+    width: 500px;
+    height: 500px;
+    background-image: url('../penrosy_banner.png');
+    z-index: 100;
+    display: block;
+    position: absolute;
+    left: calc(50% - 250px);
+    
+}

@@ -2,7 +2,7 @@
 .create-section {
     /* display: flex; */
     position: absolute;
-    top: 110px;
+    top: 90px;
     left:-30px;
     z-index: 1;
     padding: 10px 10px;
@@ -17,13 +17,13 @@
     /* color: indigo; */
     background-color: #ecadb6;
     background: linear-gradient(to bottom right, white, #f0c1c8);
-    height: 55px;
-    width: 160px;
+    height: 46px;
+    width: 140px;
     margin: 16px 15px;
     border-radius: 0px 35px 35px 0px;
      border: 1px solid #66666;
      box-shadow: 1px 1px 1px grey;
-    font-size: 16px;
+    font-size: 13px;
     font-family: 'Open Sans';
     color: #666666;
 }
@@ -42,13 +42,13 @@ button:focus {
 }
 
 .rotate-instructions {
-    background-color: #ececec;
-    font-size: 16px;
-  
-    width: 104px;
+    background-color: #f5ffff;
+    font-size: 14px;
+    color: grey;
+    width: 94px;
     margin: 20px 30px;
     border-radius: 5px;
-    border: 1px solid black;
+    border: 3px ridge aqua;
     padding: 10px;
     text-align: center;
     line-height: 24px;

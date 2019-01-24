@@ -1,14 +1,14 @@
-.body {
+#body {
     background-color:	#f0c1c8;
     background: linear-gradient(to bottom, #e798a4, #f0c1c8);
     height: 1000px;
 }
 
-.penrosy-container {
-    width: 1200px;
-    height: 740px;
+#penrosy-container {
+    width: 1000px;
+    height: 600px;
    /* background-color: yellow; */
-    margin: 0px calc((100vw - 1200px) / 2); 
+    margin: 0px calc((100vw - 1000px) / 2); 
     position: relative;
 }
 
@@ -37,19 +37,19 @@
 
 .title {
  
-    font-size: 60px; 
+    font-size: 48px; 
 }
 
-.learn {
+#learn {
     position: absolute;
     bottom: -10px;
     right: 25px;
-    font-size: 40px;
+    font-size: 36px;
     padding: 10px 20px;
     border-radius: 30px;
 }
 
-.learn:hover {
+#learn:hover {
     cursor:pointer;
     background-color: #ecadb6;
 }
@@ -63,6 +63,7 @@ footer {
     margin: auto;
     text-align: center;
     padding: 20px;
+    text-shadow: 1px 1px grey;
     
 }
 
@@ -70,4 +71,10 @@ i {
     /* color: black; */
     font-size: 40px;
     margin: 5px 10px;
+    color: grey;
+   
+}
+
+i:hover {
+     color: aqua;
 }

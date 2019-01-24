@@ -2,8 +2,10 @@
 
 <head>
     <title>Penrosy</title>
+    <link rel="stylesheet" href='./stylesheets/reset.css'>
     <link rel="stylesheet" href='./stylesheets/base.css'>
     <link rel="stylesheet" href='./stylesheets/control_panel.css'>
+    
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css">
     
@@ -13,24 +15,28 @@
 
 <body class='body'>
     <div class='penrosy-container'>
-        <h1 class='title-bar'>Penrosy</h1>
-        <div class='create-section'>
-            <button id='create-kite'>Create Kite</button>
+        <section class='title-bar'>
+            <h1 class='title'>Penrosy</h1>
+            <h3 class='learn'>Learn More</h3>
+        </section>
+
+        <section class='create-section'>
+            <button id='create-kite'>CREATE KITE</button>
             <br/>
-            <button id='create-dart'>Create Dart</button>
+            <button id='create-dart'>CREATE DART</button>
             <br/>
-            <button id='clear-current'>Clear Current</button>
+            <button id='clear-current'>CLEAR CURRENT</button>
             <br/>
-            <button id='clear-canvas'>Clear Canvas</button>
+            <button id='clear-canvas'>CLEAR CANVAS</button>
             <br/>
             <!-- <button id='marker-circles'>Marker Circles</button>
             <br /> -->
             <div class='rotate-instructions'> Press 'A' or 'D' to rotate</div>
 
-        </div>
+        </section>
 
         
-        <canvas id='penrosy-canvas' width="1000" height="620"></canvas>
+        <canvas id='penrosy-canvas' width="1200" height="750" ></canvas>
 
         <footer>
             Looking for a fullstack developer? Check me out!

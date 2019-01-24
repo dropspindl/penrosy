@@ -1,12 +1,14 @@
 .body {
-    background-color:	#ecadb6;
+    background-color:	#f0c1c8;
+    background: linear-gradient(to bottom, #e798a4, #f0c1c8);
+    height: 1000px;
 }
 
 .penrosy-container {
-    width: 1000px;
-    height: 100vh;
-   
-    margin: 0px calc((100vw - 1000px) / 2); 
+    width: 1200px;
+    height: 740px;
+   /* background-color: yellow; */
+    margin: 0px calc((100vw - 1200px) / 2); 
     position: relative;
 }
 
@@ -16,18 +18,40 @@
     border: 2px solid black;
     /* margin-left: 30px; */
     /* margin-left: calc((100vw - 1100px) / 2); */
-    box-shadow: 1px 1px 1px grey;
+    box-shadow: 2px 2px 1px grey;
 
 }
-
-
 .title-bar {
     color: white;
     font-family: 'Elsie Swash Caps';
-    font-size: 46px;
+    
     letter-spacing: 2px;
     text-shadow: 1px 1px black;
-    margin: 20px;
+     margin: 20px;
+    width: 100%;
+    /* display: flex;
+    justify-content: space-between; */
+    position: relative;
+    
+}
+
+.title {
+ 
+    font-size: 60px; 
+}
+
+.learn {
+    position: absolute;
+    bottom: -10px;
+    right: 25px;
+    font-size: 40px;
+    padding: 10px 20px;
+    border-radius: 30px;
+}
+
+.learn:hover {
+    cursor:pointer;
+    background-color: #ecadb6;
 }
 
 footer {

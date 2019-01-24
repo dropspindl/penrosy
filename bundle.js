@@ -237,7 +237,7 @@ let draggingTile = [];
 const ALL_TILES = [];
 
 function drawTiles() {
-    ctx.clearRect(0, 0, 800, 800);
+    ctx.clearRect(0, 0, 1250, 900);
     ALL_TILES.forEach(tile => tile.draw(ctx))
 }
 
@@ -330,7 +330,6 @@ canvas.addEventListener('mousedown', onMouseDown);
 function distance(mx, my, x, y){
     let xDist = mx - x;
     let yDist = my - y;
-
     return Math.sqrt((xDist * xDist) + (yDist * yDist))
 }
 
@@ -347,9 +346,7 @@ function onMouseDown(e){
     const pos = getMousePos(e)
     ALL_TILES.forEach(tile => {
        
-        if (distance(pos.x, pos.y, tile.centerX(), tile.centerY()) < 30 ) {
-            
-            
+        if (distance(pos.x, pos.y, tile.centerX(), tile.centerY()) < 30 ) {      
             currentTile[0] = tile;
             draggingTile[0] = tile;
             document.addEventListener('mousemove', onMouseMove);
@@ -376,20 +373,22 @@ function onMouseUp(e) {
     document.removeEventListener('mousemove', onMouseMove);
 }
 
+// ------ANIMATE FUNCTIONS ------
+
 function highlightSelected() {
     if (currentTile[0]) {
         currentTile[0].highlight(ctx)
     }
 }
 
-
-
 function clearCanvas() {
-    ctx.clearRect(0, 0, 1100, 620)
+    var rect = canvas.getBoundingClientRect();
+    // ctx.clearRect(rect.left, rect.top, rect.right, rect.bottom)
+    ctx.clearRect(10, 10, 100, 100)
 }    
 
 function animate() {
-    clearCanvas();
+    // clearCanvas();
     drawTiles();
     highlightSelected();
     // if (circles === true) {drawCircles()}

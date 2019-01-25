@@ -11,14 +11,14 @@
 #about { 
     width: 1002px;
     height: 600px;
-    background-image: url('../penrosy_banner.png');
+    background-image: url('../images/penrosy_banner.png');
     /* background-repeat: no-repeat; */
     object-fit: contain;
-    z-index: 100;
+    z-index: 1;
     display: block;
     position: absolute;
     left: calc(50% - 503px);
-    top: 88px;
+    top: 87px;
     border-radius: 10px;
     border: 4px solid grey;
    
@@ -26,11 +26,53 @@
 }
 
 .description {
-    width: 600px;
+    width: 640px;
     height: 480px;
     /* margin: auto; */
     background-color: white;
     opacity: .85;
     margin: 40px auto;
     border: 2px solid grey;
+
+    font-family: 'Open Sans';
+    padding: 10px;
+    /* overflow: scroll; */
+   
+}
+
+.container {
+    overflow: scroll;
+    height: 452px;
+    /* margin: 2px 0px; */
+}
+
+.description h1 {
+    font-size: 22px;
+    /* font-family: 'Open Sans'; */
+    color: #e798a4;
+    text-align: center;
+    font-weight: bold;
+    padding: 5px 0px 8px 0px;
+    
+}
+
+.description h2 {
+    font-family: 'Elsie Swash Caps';
+    /* color: grey; */
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.description p {
+    font-size: 14px;
+    /* color: grey; */
+    padding: 10px;
+    line-height: 1.5;
+}
+
+.description img {
+    /* margin: auto; */
+    padding: auto;
+    margin: 30px;
 }

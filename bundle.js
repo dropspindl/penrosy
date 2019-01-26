@@ -100,7 +100,7 @@ __webpack_require__.r(__webpack_exports__);
 
 let PHI = (Math.sqrt(5) + 1)/2;
 let to_radians = Math.PI / 180;
-let colors = ["#ecadb6", "#cc0030", "#ecadb6", "#cc0030", "#566f56"];
+let colors = ["#ecadb6", "#cc0030", "#566f56"];
 
 class Dart  {
     constructor(options) {

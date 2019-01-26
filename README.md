@@ -10,6 +10,10 @@ Just because Penrose Tiles are mathy, doesn't mean they can't be beautiful too! 
 
 
 ## Penrose Tiles- Background
+
+<img src='./images/penrosy_banner.png'>
+
+## Old
  
 
 An aperiodic tiling is one that can cover an infinite plane with no gaps, but NEVER REPEAT! It is always different. 

@@ -1,36 +1,33 @@
 .hiding { 
     /* filter: brightness(50%); */
-
     /* opacity: 0.5; */
     /* filter: greyscale(50%); */
-    /* background:rgba(56,255,255,0.1); */
-   
+    /* background:rgba(56,255,255,0.1); */   
     
 }
 
 #about { 
-    width: 1002px;
+    width: 1034px;
     height: 600px;
     background-image: url('../images/penrosy_banner.png');
     /* background-repeat: no-repeat; */
-    object-fit: contain;
+    /* object-fit: contain; */
     z-index: 1;
     display: block;
     position: absolute;
-    left: calc(50% - 503px);
+    left: calc(50% - 517px);
     top: 87px;
     border-radius: 10px;
     border: 4px solid grey;
    
-    
 }
 
 .description {
-    width: 640px;
+    width: 620px;
     height: 480px;
     /* margin: auto; */
     background-color: white;
-    opacity: .85;
+    opacity: .8;
     margin: 40px auto;
     border: 2px solid grey;
 
@@ -40,26 +37,49 @@
    
 }
 
-.container {
+.info-container {
     overflow: scroll;
     height: 452px;
     /* margin: 2px 0px; */
 }
 
-.description h1 {
+.exit-bar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.exit-bar h1 {
     font-size: 22px;
     /* font-family: 'Open Sans'; */
-    color: #e798a4;
+    color: #cc0030;
     text-align: center;
     font-weight: bold;
     padding: 5px 0px 8px 0px;
     
 }
 
+/* the i is the X to close the modal, which is just there for UI AFFORDANCES 
+(to make sure people know they can click to close).
+You can click anywhere. the x isn't special. */
+
+.exit-bar i{
+
+ font-size: 30px;
+ /* font-weight: bolder; */
+ color: #cc0030;
+ background-color: white;
+}
+
+.description i:hover {
+    cursor: pointer;
+    color: #db4c6e;
+
+}
+
 .description h2 {
     font-family: 'Elsie Swash Caps';
     /* color: grey; */
-    font-size: 20px;
+    font-size: 26px;
     font-weight: bold;
     padding: 10px;
 }

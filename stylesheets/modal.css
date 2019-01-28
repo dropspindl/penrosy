@@ -22,25 +22,24 @@
    
 }
 
-.description {
-    width: 620px;
+.description-container {
+    width: 628px;
     height: 480px;
-    /* margin: auto; */
     background-color: white;
     opacity: .8;
     margin: 40px auto;
     border: 2px solid grey;
 
     font-family: 'Open Sans';
-    padding: 10px;
-    /* overflow: scroll; */
+    padding: 2px;
    
 }
 
-.info-container {
+.scroll-box {
     overflow: scroll;
-    height: 452px;
-    /* margin: 2px 0px; */
+    height: 430px; 
+ 
+    /* margin: 8px 0px; */
 }
 
 .exit-bar {
@@ -54,7 +53,7 @@
     color: #cc0030;
     text-align: center;
     font-weight: bold;
-    padding: 5px 0px 8px 0px;
+    padding: 12px 0px 12px 0px;
     
 }
 
@@ -70,13 +69,13 @@ You can click anywhere. the x isn't special. */
  background-color: white;
 }
 
-.description i:hover {
+.description-container i:hover {
     cursor: pointer;
     color: #db4c6e;
 
 }
 
-.description h2 {
+.description-container h2 {
     font-family: 'Elsie Swash Caps';
     /* color: grey; */
     font-size: 26px;
@@ -84,15 +83,21 @@ You can click anywhere. the x isn't special. */
     padding: 10px;
 }
 
-.description p {
+.description-container p {
     font-size: 14px;
     /* color: grey; */
     padding: 10px;
     line-height: 1.5;
 }
 
-.description img {
+.description-container img {
     /* margin: auto; */
     padding: auto;
-    margin: 30px;
+    margin: 20px;
+    border: 1px solid grey;
+}
+
+#small-img {
+    margin-left: 160px;
+
 }

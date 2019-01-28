@@ -1,6 +1,6 @@
 # [Penrosy](https://dropspindl.github.io/penrosy/)
 <br/>
-<img src='https://i.imgur.com/BDrUeJ0.png' align='center' border-radius=3/>
+<img src='./images/penrosy_screen.png' align='center' border-radius=5/>
 
 ### [Live Site](https://dropspindl.github.io/penrosy/)
 
@@ -11,7 +11,7 @@ Just because Penrose Tiles are mathy, doesn't mean they can't be beautiful too! 
 
 ## Penrose Tiles- Background
 
-<img src='./images/penrosy_banner.png'>
+<img src='./images/penrosy_banner.png' align='center' border-radius=5 />
 
 ## Old
  
@@ -29,16 +29,17 @@ Learn more about Penrose tiles [here](http://nautil.us/issue/13/symmetry/impossi
 ## Technologies
 
   - Javascript 
-  - CSS 
+  - HTML / CSS 
   - Canvas (to make tile shape) 
+  - Webpack
  
-  I developed Penrosy using straight Javascript with Canvas in order to strengthen my skills in that language. 
+  I developed Penrosy using straight Javascript with Canvas in order to strengthen my skills in vanilla DOM manipulation. 
   
 ## Building the Tiles 
  
  The tiles are drawn using Canvas. It was important for me to get them mathematically correct rather than just using an image or approximate points. 
 
-One difficulty I encountered is that the tiles are drawn using a starting x and y coordinate point. However, I want both the color gradient and the mouse abilities to be focused on the center of the tile, NOT on a specific vertices. This meant that I ended up having to write a decent amount of code to find the center, given the x, y, size, and angle, and to find the x or y coordinate given the center (and size, and angle). Were I to start this project over (or do a lot of refactoring), I would have chosen to make the x and y coordinates the center of the tile, and adjust my formulae for drawing the tiles accordingly. 
+One difficulty I encountered is that the tiles are drawn using a starting x and y coordinate point. However, I want both the color gradient and the mouse/ movement abilities to be focused on the center of the tile, NOT on a specific vertices. This meant that I ended up having to write a decent amount of code to find the center, given the x, y, size, and angle, and to find the x or y coordinate given the center (and size, and angle). Were I to start this project over (or do a lot of refactoring), I would have chosen to make the x and y coordinates the center of the tile, and adjust my formulae for drawing the tiles accordingly. 
 
 Below is coding for the Dart class, where you can see that since my draw function starts at vertices (x, y) I have created functions to get to and from the center. These functions, using different formulae are written on the kite class also, which allows me to call it on any tile. 
 
@@ -64,18 +65,12 @@ Mouse move looks at the location of the mouse and uses the aforementioned formul
 
 In the code below, you can see my mouse down function. There was a tricky bug here where the place that needed to be clicked to make the function run was above and to the left of the actual shape. This turned out to be because the mouse listener was getting it's coordinates relative to the whole screen, rather than the canvas itself. This was solved with the getMousePos function which return the mouse's position relative to the bounding canvas. 
 
-<img src='https://i.imgur.com/8WuZSR2.png' align='center' border-radius=3/>
+<img src='https://i.imgur.com/8WuZSR2.png' align='center' border-radius=5/>
 
 
 
 
-  
- ## MVPs 
- 
-   - Basic visuals and an interactive interface
-   - User can drag, rotate, and place shapes
-   - User can clear canvas
-   - Page describes Penrose tiles 
+
    
  
 

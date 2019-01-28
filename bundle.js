@@ -435,23 +435,23 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-const openModal = function(e) {
-   
+const openModal = function(e) {  
     e.stopPropagation();
-    console.log("it should open")
-    modal.style.display = "block";
-    penrosy.addEventListener("click", closeModal);
-    penrosy.classList.add("hiding");
-    // penrosy.id = 'hiding';
 
+    modal.style.display = "block";
+    penrosy.classList.add("hiding");
+
+    penrosy.addEventListener("click", closeModal);
+    // penrosy.id = 'hiding';
 }
 
 const closeModal = function(e) {
     e.stopPropagation();
-    console.log("it should close?");
+
     modal.style.display = "none";
-    penrosy.removeEventListener("click", closeModal);
     penrosy.className = penrosy.className.replace(/\bhiding\b/g, "");
+
+    penrosy.removeEventListener("click", closeModal);
     // penrosy.id = 'not';
 
 }

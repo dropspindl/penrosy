@@ -7,7 +7,7 @@
     <link rel="stylesheet" href='./stylesheets/modal.css'>
     <link rel="stylesheet" href='./stylesheets/control_panel.css'>
     
-
+    <!-- fontawesome is imported solely for the github and linked in buttons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css">
     
     <link href="https://fonts.googleapis.com/css?family=Elsie+Swash+Caps" rel="stylesheet">
@@ -15,7 +15,7 @@
 </head>
 
 <section id='about'>
-    <div class="description">
+    <div class="description-container">
         <!-- The purpose of the container class is to allow for padding in the scroll box.  
         Otherwise the content goes all the way to the top and bottom  -->
         <div class='exit-bar'>
@@ -24,52 +24,51 @@
             <i class="fas fa-times-circle"></i>
         </div>
 
-        <div class='info-container'>
+        <div class='scroll-box'>
 
-       <h2>Penrose Tiles</h2>
-       <p>One of the oldest problems in geometry asks which shapes (or sets of shapes)
-           can tile a plane, 
-           locking together with copies of themselves to
-            cover a flat area in an endless pattern called a tessellation.</p>
+            <h2>Penrose Tiles</h2>
+            <p>One of the oldest problems in geometry asks which shapes (or sets of shapes)
+                can tile a plane, 
+                locking together with copies of themselves to
+                    cover a flat area in an endless pattern called a tessellation.</p>
 
-        <p>It's easy to see how squares, triangles, and hexagons are tiling shapes, 
-            but pentagons are much harder. It has recently been proven that there are only 
-            15 pentagons (discovered between 1918 and 2015) that can do so. 
-        </p>
-        <img src='./images/pentagons.png'/>
-        <p>In the 1970s, Roger Penrose discovered various series of tiles 
-            (related to pentagons in angle) that were APERIODIC. 
-            This means that you could lay these tile sets forever and the pattern would never repeat!
-            One such set is the kite and dart, which we use here.
-         </p>
+            <p>It's easy to see how squares, triangles, and hexagons are tiling shapes, 
+                but pentagons are much harder. It has recently been proven that there are only 
+                15 pentagons (discovered between 1918 and 2015) that can do so. 
+            </p>
+            <img src='./images/pentagons.png'/>
+            <p>In the 1970s, Roger Penrose discovered various series of tiles 
+                (related to pentagons in angle) that were APERIODIC. 
+                This means that you could lay these tile sets forever and the pattern would never repeat!
+                One such set is the kite and dart, which we use here.
+            </p>
 
-         <p><a href='https://www.maa.org/sites/default/files/pdf/pubs/focus/Gardner_PenroseTilings1-1977.pdf'>
-            Martin Gardner wrote a really great booklet on Penrose tiles 
-             and you can read it for free here</a></p>
-         <br/>
-        <h2>Legal Moves</h2>
-        <p>Although Penrosy allows you to lay tiles however you like, 
-            making an actual Penrose tiling requires following some rules. 
-            You can't just put a kite into a dart like so to create a rhombus. 
-            Rhombuses tile periodically! 
-            Instead you have to line up the imaginary lines shown below.
-        </p>
-        <img class='small-img' src='./images/arc.png'/>
+            <p><a href='https://www.maa.org/sites/default/files/pdf/pubs/focus/Gardner_PenroseTilings1-1977.pdf'>
+                Martin Gardner wrote a really great booklet on Penrose tiles 
+                and you can read it for free here</a></p>
+            <br/>
+            <h2>Legal Moves</h2>
+            <p>Although Penrosy allows you to lay tiles however you like, 
+                making an actual Penrose tiling requires following some rules. 
+                You can't just put a kite into a dart like so to create a rhombus. 
+                Rhombuses tile periodically! 
+                Instead you have to line up the imaginary lines shown below.
+            </p>
+            <img id='small-img' src='./images/arc.png'/>
 
-        <p>It turns out there are only seven appropriate ways to lay the tiles 
-            when you follow this placement rule!>
-        </p>
-        <img class='small-img' src='./images/seven.png' />
-        
-     </div>
+            <p>It turns out there are only seven appropriate ways to lay the tiles 
+                when you follow this placement rule!>
+            </p>
+            <img id='small-img' src='./images/seven.png' />
+                
+        </div>
     </div>
     
 </section>
 
 
 
-<body class='body hiding' id='bod' >
-    
+<body class='body' id='bod' > 
 
     <div class='penrosy-container' >
         <!-- modal -->

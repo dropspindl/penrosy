@@ -1,7 +1,8 @@
 # [Penrosy](https://dropspindl.github.io/penrosy/)
+<br/>
+<img src='https://i.imgur.com/BDrUeJ0.png' align='center' border-radius=3/>
 
-
-<img src='./images/penrosy_banner.png' align='center' border-radius=3 />
+### [Live Site](https://dropspindl.github.io/penrosy/)
 
 Penrose tiling apps generally focus solely on the math, ignoring aesthetics completely. Some don't even have any color at all!
 

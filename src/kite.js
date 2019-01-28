@@ -6,7 +6,7 @@ let colors = ["#ecadb6", "#cc0030", "#ecadb6", "#cc0030", "#566f56"];
 class Kite  {
     constructor(options) {
         this.x = 200;
-        this.y = 120;
+        this.y = 95;
         this.angle = 0;
         this.color = colors[Math.floor(Math.random() * colors.length)];
         this.size = 70;

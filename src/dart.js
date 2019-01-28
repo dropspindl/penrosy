@@ -7,7 +7,7 @@ let colors = ["#ecadb6", "#cc0030", "#566f56"];
 class Dart  {
     constructor(options) {
         this.x = 200;
-        this.y = 240;
+        this.y = 180;
         this.angle = 0;
         this.color = colors[Math.floor(Math.random() * colors.length)];
         this.size = 70;

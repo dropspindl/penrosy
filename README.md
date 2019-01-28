@@ -1,12 +1,11 @@
-# Penrosy
-<br/>
-<img src='https://i.imgur.com/BDrUeJ0.png' align='center' border-radius=3/>
+# [Penrosy](https://dropspindl.github.io/penrosy/)
+
+
+<img src='./images/penrosy_banner.png' align='center' border-radius=3 />
 
 Penrose tiling apps generally focus solely on the math, ignoring aesthetics completely. Some don't even have any color at all!
 
 Just because Penrose Tiles are mathy, doesn't mean they can't be beautiful too! I created Penrosy to allow people to explore the beauty of Penrose tiles in an open-ended fashion
-
-<img src="https://i.imgur.com/TM4bH1F.png" align='center' border-radius=3/>
 
 
 ## Penrose Tiles- Background
